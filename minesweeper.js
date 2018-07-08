@@ -2,7 +2,7 @@ var PERCENTAGE = Number(localStorage['per']);
 if(!Number.isInteger(PERCENTAGE) || PERCENTAGE < 0 || PERCENTAGE > 100){
 	PERCENTAGE = 30;
 }
-document.getElementById("currPer").innerText = "Current Percentage is " + PERCENTAGE;
+document.getElementById("custPer").innerText += ". Curr : " + PERCENTAGE;
 
 var ct = document.getElementById("cnt");
 
