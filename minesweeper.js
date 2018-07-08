@@ -2,8 +2,14 @@ var PERCENTAGE = Number(localStorage['per']);
 if(!Number.isInteger(PERCENTAGE) || PERCENTAGE < 0 || PERCENTAGE > 100){
 	PERCENTAGE = 30;
 }
+document.getElementById("currPer").innerText = "Current Percentage is " + PERCENTAGE;
 
 var ct = document.getElementById("cnt");
+
+function setPer(per){
+	localStorage['per'] = per;
+	window.location.reload();
+}
 
 function main(arr){
 	var tab = document.createElement("table");
@@ -34,7 +40,7 @@ function addClickList(arr){
    			var x = +bt.id.split(" ")[0];
    			var y = +bt.id.split(" ")[1];
    			if(arr[x][y] === "*"){
-   				document.getElementById("gameoverdiv").style.display = "block";
+   				document.getElementById("gameoverdiv").style.display = "inline-block";
 				arr.forEach(function(trs,x){
 					trs.forEach(function(td,y){
 						if(td === "*"){
@@ -63,22 +69,24 @@ function addClickList(arr){
    			} else {
    			    bt.dataset.flagged = "true";
    				bt.innerText = "F";
-   				if(checkIfAllFlagged(arr)){
-   					document.getElementById("gamewondiv").style.display = "block";
-   				}
+   			}
+   			if(checkIfAllFlaggedProperly(arr)){
+   				document.getElementById("gamewondiv").style.display = "inline-block";
    			}
    			e.preventDefault();
    		}
    	};
 }
 
-function checkIfAllFlagged(arr){
+function checkIfAllFlaggedProperly(arr){
 	var X = arr.length, Y = arr[0].length;
 	for(var i = 0;i < X ;i++){
 		for(var j = 0; j < Y; j++){
-			if(arr[i][j] === "*" && document.getElementById(i + " " + j).dataset.flagged !== "true"){
+			var dataStar = arr[i][j] === "*";
+			var btFlagged = document.getElementById(i + " " + j).dataset.flagged === "true"; 
+			if((dataStar && !btFlagged) || (btFlagged && !dataStar)){
 				return false;
-			}
+			} 
 		}
 	}
 	return true;

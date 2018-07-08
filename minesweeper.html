@@ -3,6 +3,13 @@
 <body>
 
 <div>
+	
+	<div class="div-button" onclick="localStorage['per'] = window.prompt('Enter percentage', Number.isInteger(+localStorage['per']) ? localStorage['per'] : 30); location.reload();">customise no of mines (def : 30 )</div>
+	<div class="set-level div-button" onclick="setPer(30)">Beginner(30%)</div>
+	<div class="set-level div-button" onclick="setPer(50)">Medium(50%)</div>
+	<div class="set-level div-button" onclick="setPer(70)">Hard(70%)</div>
+	<div class="set-level div-button" onclick="setPer(85)">Expert(85%)</div>
+	<div class="div-button" id="currPer"></div>
 	<div id="gameoverdiv">
 		<marquee DIRECTION=RIGHT id="gameover">GAME OVER!</marquee>
 		<div class="div-button" onclick="window.location.reload()">Click to reload</div>
@@ -11,9 +18,9 @@
 		<div id="gamewon">GAME WON!</div>
 		<div class="div-button" onclick="window.location.reload()">Click to reload</div>
 	</div>
-	<div class="div-button" onclick="localStorage['per'] = window.prompt('Enter percentage', Number.isInteger(+localStorage['per']) ? localStorage['per'] : 30); location.reload();">customise no of mines (def : 30 )</div>
 	<div id="cnt">
 	</div>
+
 </div>
 <style type="text/css">
 	button{
@@ -23,12 +30,11 @@
 	#gameover{
 		color : red;
 	}
-	#gameoverdiv{ 
+	#gameoverdiv,#gamewondiv{ 
 		display: none;
+		padding-left: 50px;
 	}
-	#gamewondiv{
-		display: none;
-	}
+	
 	#gamewon{
 		color : blue;
 	}
