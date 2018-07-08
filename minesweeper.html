@@ -5,10 +5,11 @@
 <div>
 	<div id="gameoverdiv">
 		<marquee DIRECTION=RIGHT id="gameover">GAME OVER!</marquee>
-		<!-- <button onclick="window.location.reload()">Click to reload</button> -->
+		<div class="div-button" onclick="window.location.reload()">Click to reload</div>
 	</div>
 	<div id="gamewondiv">
 		<div id="gamewon">GAME WON!</div>
+		<div class="div-button" onclick="window.location.reload()">Click to reload</div>
 	</div>
 	<div class="div-button" onclick="localStorage['per'] = window.prompt('Enter percentage', Number.isInteger(+localStorage['per']) ? localStorage['per'] : 30); location.reload();">customise no of mines (def : 30 )</div>
 	<div id="cnt">
