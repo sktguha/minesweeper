@@ -7,6 +7,9 @@ document.getElementById("custPer").innerText += ". Curr : " + PERCENTAGE;
 var ct = document.getElementById("cnt");
 
 function setPer(per){
+	if(!window.confirm("set percentage to " + per + " and reload ??"))
+		return;
+	
 	localStorage['per'] = per;
 	window.location.reload();
 }
