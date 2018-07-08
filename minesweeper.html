@@ -10,6 +10,7 @@
 	<div id="gamewondiv">
 		<div id="gamewon">GAME WON!</div>
 	</div>
+	<div class="div-button" onclick="localStorage['per'] = window.prompt('Enter percentage', Number.isInteger(+localStorage['per']) ? localStorage['per'] : 30); location.reload();">customise no of mines (def : 30 )</div>
 	<div id="cnt">
 	</div>
 </div>
@@ -30,7 +31,19 @@
 	#gamewon{
 		color : blue;
 	}
+	.div-button {
+		display:inline-block;
+	    color:#444;
+	    border:1px solid #CCC;
+	    background:#DDD;
+	    box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+	    cursor:pointer;
+	    vertical-align:middle;
+	    max-width: 100px;
+	    padding: 5px;
+	    text-align: center;
+	}
 </style>
-<script src="https://cdn.rawgit.com/john-doherty/long-press/tree/v1.0.1"></script>
+<script src="long-press.min.js"></script>
 <script src="minesweeper.js"></script>
 </body>

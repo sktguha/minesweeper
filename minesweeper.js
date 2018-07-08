@@ -1,4 +1,7 @@
-var PERCENTAGE = 30;
+var PERCENTAGE = Number(localStorage['per']);
+if(!Number.isInteger(PERCENTAGE) || PERCENTAGE < 0 || PERCENTAGE > 100){
+	PERCENTAGE = 30;
+}
 
 var ct = document.getElementById("cnt");
 
