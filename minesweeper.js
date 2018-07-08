@@ -1,3 +1,5 @@
+var PERCENTAGE = 30;
+
 var ct = document.getElementById("cnt");
 
 function main(arr){
@@ -80,11 +82,21 @@ function checkIfAllFlagged(arr){
 }
 
 function getNeighboutCt(arr, x, y){
-	var ct = 0;
-   				if(arr[x-1] && arr[x-1][y] === "*") ct++;
-   				if(arr[x] && arr[x][y-1] === "*") ct++;
-   				if(arr[x+1] && arr[x+1][y] === "*") ct++;
-   				if(arr[x] && arr[x][y+1] === "*") ct++;
+	var indexes = [
+		[x-1,y-1],
+		[x-1,y],
+		[x-1,y+1],
+		[x,y-1],
+		// [x,y],
+		[x,y+1],
+		[x+1, y-1],
+		[x+1, y],
+		[x+1, y+1]
+	];
+
+	var ct = indexes.filter(function(idx){
+		return arr[idx[0]] && arr[idx[0]][idx[1]] === "*";
+	}).length;
    	return ct;
 }
 
@@ -106,7 +118,7 @@ function fillMines(arr,per){
 
 setTimeout(function(){
 	var dataMap = dataMapOld;
-	fillMines(dataMap, 1);
+	fillMines(dataMap, PERCENTAGE);
 	console.log("generated map\n", dataMap);
 	main(dataMap);
 },1);
